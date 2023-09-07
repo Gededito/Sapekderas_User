@@ -27,10 +27,15 @@ class _LoginViewState extends State<LoginView> {
     //
     // emailController =
     // TextEditingController(text: kDebugMode ? "anisah@gmail.com" : "");
+    // emailController =
+    //     TextEditingController(text: kDebugMode ? "user1@gmail.com" : "");
+    // passwordController =
+    //     TextEditingController(text: kDebugMode ? "12345678" : "");
+
     emailController =
-        TextEditingController(text: kDebugMode ? "user1@gmail.com" : "");
+        TextEditingController();
     passwordController =
-        TextEditingController(text: kDebugMode ? "12345678" : "");
+        TextEditingController();
   }
 
   @override
@@ -58,21 +63,17 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               const SizedBox(height: 100),
-              TextField(
+              TextFormField(
                 controller: emailController,
-                // keyboardType: ,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                     labelText: 'Email',
                     labelStyle: FontsUtils.poppins(
                         fontSize: 14, fontWeight: FontWeight.w600),
-                    suffixIcon: const Icon(
-                      Icons.person,
-                      size: 30,
-                    )),
+                ),
               ),
               const SizedBox(height: 24),
-              TextField(
+              TextFormField(
                 controller: passwordController,
                 textInputAction: TextInputAction.done,
                 obscureText: isHide,
@@ -90,11 +91,11 @@ class _LoginViewState extends State<LoginView> {
                         ? const Icon(
                             Icons.visibility_rounded,
                             // color: Colors.white,
-                            size: 30,
+                            size: 20,
                           )
                         : const Icon(
                             Icons.visibility_off_rounded,
-                            size: 30,
+                            size: 20,
 
                             // color: Colors.white,
                           ),
