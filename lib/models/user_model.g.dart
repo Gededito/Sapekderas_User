@@ -21,8 +21,9 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       password: fields[1] as String,
       id: fields[2] as String,
       phone: fields[4] as String,
-      type: fields[5] as String,
+      type: fields[6] as String,
       name: fields[3] as String,
+      nik: fields[5] as String
     );
   }
 
@@ -41,6 +42,8 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(4)
       ..write(obj.phone)
       ..writeByte(5)
+      ..write(obj.nik)
+      ..writeByte(6)
       ..write(obj.type);
   }
 
@@ -66,6 +69,7 @@ UserModel _$UserModelFromJson(Map json) => UserModel(
       phone: json['phone'] as String? ?? '',
       type: json['type'] as String? ?? "user",
       name: json['name'] as String? ?? "",
+      nik: json['nik'] as String? ?? ""
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -74,5 +78,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'phone': instance.phone,
+      'nik' : instance.nik,
       'type': instance.type,
     };

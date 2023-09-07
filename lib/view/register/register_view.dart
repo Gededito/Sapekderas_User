@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sapekderas/models/user_model.dart';
@@ -17,6 +18,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  late TextEditingController nikController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController nameController;
@@ -26,13 +28,19 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   void initState() {
     super.initState();
-    emailController =
-        TextEditingController(text: kDebugMode ? "user1@gmail.com" : "");
-    passwordController =
-        TextEditingController(text: kDebugMode ? "12345678" : "");
-    phoneNumberController =
-        TextEditingController(text: kDebugMode ? "08888888888" : "");
-    nameController = TextEditingController(text: kDebugMode ? "Joe" : "");
+    // emailController =
+    //     TextEditingController(text: kDebugMode ? "user1@gmail.com" : "");
+    // passwordController =
+    //     TextEditingController(text: kDebugMode ? "12345678" : "");
+    // phoneNumberController =
+    //     TextEditingController(text: kDebugMode ? "08888888888" : "");
+    // nameController = TextEditingController(text: kDebugMode ? "Joe" : "");
+
+    nikController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    phoneNumberController = TextEditingController();
+    nameController = TextEditingController();
   }
 
   @override
@@ -60,7 +68,38 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
               ),
               const SizedBox(height: 50),
-              TextField(
+
+              /// Bagian NIK belum bisa dimasukan ke Database
+              TextFormField(
+                controller: nikController,
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.next,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(16),
+                ],
+                decoration: InputDecoration(
+                  labelText: 'NIK',
+                  labelStyle: FontsUtils.poppins(
+                    fontSize: 14, fontWeight: FontWeight.w600
+                  ),
+                ),
+                onFieldSubmitted: (value) {
+                  setState(() {
+
+                    if (nikController.text.length != 16) {
+                      Fluttertoast.showToast(
+                          msg: "NIK harus 16 angka", backgroundColor: Colors.red);
+
+                      return;
+                    }
+                  });
+                },
+              ),
+
+
+              const SizedBox(height: 12),
+              TextFormField(
                 controller: nameController,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
@@ -70,7 +109,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
               ),
               const SizedBox(height: 12),
-              TextField(
+              TextFormField(
                 controller: emailController,
                 // keyboardType: ,
                 textInputAction: TextInputAction.next,
@@ -78,13 +117,10 @@ class _RegisterViewState extends State<RegisterView> {
                     labelText: 'Email',
                     labelStyle: FontsUtils.poppins(
                         fontSize: 14, fontWeight: FontWeight.w600),
-                    suffixIcon: const Icon(
-                      Icons.person,
-                      size: 30,
-                    )),
+                ),
               ),
               const SizedBox(height: 12),
-              TextField(
+              TextFormField(
                 controller: phoneNumberController,
                 keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.next,
@@ -92,13 +128,11 @@ class _RegisterViewState extends State<RegisterView> {
                     labelText: 'Nomor Telepon',
                     labelStyle: FontsUtils.poppins(
                         fontSize: 14, fontWeight: FontWeight.w600),
-                    suffixIcon: const Icon(
-                      Icons.person,
-                      size: 30,
-                    )),
+                ),
               ),
               const SizedBox(height: 12),
-              TextField(
+
+              TextFormField(
                 controller: passwordController,
                 textInputAction: TextInputAction.done,
                 obscureText: isHide,
@@ -116,12 +150,11 @@ class _RegisterViewState extends State<RegisterView> {
                         ? const Icon(
                             Icons.visibility_rounded,
                             // color: Colors.white,
-                            size: 30,
+                            size: 20,
                           )
                         : const Icon(
                             Icons.visibility_off_rounded,
-                            size: 30,
-
+                            size: 20,
                             // color: Colors.white,
                           ),
                   ),
@@ -177,9 +210,13 @@ class _RegisterViewState extends State<RegisterView> {
                           Fluttertoast.showToast(
                             msg: "Nomor Telepon tidak boleh kosong",
                           );
-                        } else if (passwordController.text == "") {
+                        } else if (passwordController.text.length >= 8) {
                           Fluttertoast.showToast(
                             msg: "Password tidak boleh kosong",
+                          );
+                        } else if (nikController.text == "") {
+                          Fluttertoast.showToast(
+                            msg: "NIK tidak boleh kosong dan harus 16 angka",
                           );
                         } else {
                           context.read<AuthCubit>().registerEvent(UserModel(
@@ -187,6 +224,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 name: nameController.text,
                                 phone: phoneNumberController.text,
                                 password: passwordController.text,
+                                nik: nikController.text,
                                 id: const Uuid().v4(),
                               ));
                           // context.read<LoginCubit>().addAdmin();
