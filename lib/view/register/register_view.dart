@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -210,13 +209,13 @@ class _RegisterViewState extends State<RegisterView> {
                           Fluttertoast.showToast(
                             msg: "Nomor Telepon tidak boleh kosong",
                           );
-                        } else if (passwordController.text.length >= 8) {
-                          Fluttertoast.showToast(
-                            msg: "Password tidak boleh kosong",
-                          );
-                        } else if (nikController.text == "") {
+                        } else if (nikController.text.length == 16) {
                           Fluttertoast.showToast(
                             msg: "NIK tidak boleh kosong dan harus 16 angka",
+                          );
+                        } else if (passwordController.text.length >= 8) {
+                          Fluttertoast.showToast(
+                            msg: "Password minimal harus 8 kata",
                           );
                         } else {
                           context.read<AuthCubit>().registerEvent(UserModel(
