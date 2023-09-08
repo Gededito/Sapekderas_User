@@ -26,6 +26,7 @@ class LetterModel extends Equatable {
   final String rtrw;
 
   final String address;
+  final String informations;
   final DateTime? createdAt;
   final StatusLetter status;
 
@@ -54,6 +55,7 @@ class LetterModel extends Equatable {
     this.statusMarried = "",
     this.job = "",
     this.address = "",
+    this.informations = "",
     this.createdAt,
     this.status = StatusLetter.progress,
     this.father,
@@ -82,6 +84,7 @@ class LetterModel extends Equatable {
         statusMarried,
         job,
         address,
+        informations,
         createdAt,
         status,
         userId,
@@ -107,6 +110,7 @@ class LetterModel extends Equatable {
       String? statusMarried,
       String? job,
       String? address,
+      String? informations,
       DateTime? createdAt,
       StatusLetter? status,
       LetterFamily? father,
@@ -129,6 +133,7 @@ class LetterModel extends Equatable {
       statusMarried: statusMarried ?? this.statusMarried,
       job: job ?? this.job,
       address: address ?? this.address,
+      informations: informations ?? this.informations,
       createdAt: createdAt ?? this.createdAt,
       status: status ?? this.status,
       mother: mother ?? this.mother,
@@ -162,7 +167,8 @@ class LetterFamily extends Equatable {
       this.religion = "",
       this.job = "",
       this.address = "",
-      this.rtrw = ""});
+      this.rtrw = "",
+      });
 
   factory LetterFamily.fromJson(Map<String, dynamic> json) =>
       _$LetterFamilyFromJson(json);
@@ -182,6 +188,7 @@ class LetterFamily extends Equatable {
     String? religion,
     String? job,
     String? address,
+    String? information,
     String? rtrw,
   }) {
     return LetterFamily(

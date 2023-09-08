@@ -31,6 +31,7 @@ class _LetterFormViewState extends State<LetterFormView> {
   late TextEditingController rtController;
   late TextEditingController nationalityController;
   late TextEditingController addressController;
+  late TextEditingController informationController;
 
   /// Dropdonw
   String? valueGender;
@@ -71,7 +72,6 @@ class _LetterFormViewState extends State<LetterFormView> {
 
   void _performSearch() {
     setState(() {
-
       if (nikController.text.length != 16) {
         Fluttertoast.showToast(
             msg: "NIK harus 16 angka", backgroundColor: Colors.red);
@@ -85,6 +85,89 @@ class _LetterFormViewState extends State<LetterFormView> {
 
       _isSearching = true;
     });
+  }
+
+  void _performSearchFather() {
+    setState(() {
+      if (nikFatherController.text.length != 16) {
+        Fluttertoast.showToast(
+          msg: "NIK harus 16 angka", backgroundColor: Colors.red
+        );
+
+        return;
+      }
+
+      context.read<GetCitizenCubit>().searchNikCitizen(
+          nikFatherController.text,
+          type: SearchType.father);
+
+      _isSearching = true;
+    });
+  }
+
+  void _performSearchMother() {
+    setState(() {
+      if (nikMotherController.text.length != 16) {
+        Fluttertoast.showToast(
+          msg: "NIK harus 16 angka", backgroundColor: Colors.red
+        );
+
+        return;
+      }
+
+      context.read<GetCitizenCubit>().searchNikCitizen(
+        nikMotherController.text,
+        type: SearchType.mother
+      );
+
+      _isSearching = true;
+    });
+  }
+
+  void _searchSubmit() {
+    if (nikController.text.length != 16) {
+      Fluttertoast.showToast(
+          msg: "NIK harus 16 angka", backgroundColor: Colors.red);
+
+      return;
+    }
+
+    context
+        .read<GetCitizenCubit>()
+        .searchNikCitizen(nikController.text, type: SearchType.main);
+
+    _isSearching = true;
+  }
+
+  void _searchSubmitFather() {
+    if (nikFatherController.text.length != 16) {
+      Fluttertoast.showToast(
+        msg: "NIK harus 16 angka", backgroundColor: Colors.red
+      );
+
+      return;
+    }
+
+    context.read<GetCitizenCubit>().searchNikCitizen(nikController.text, type: SearchType.father);
+
+    _isSearching = true;
+  }
+
+  void _searchSubmitMother() {
+    if (nikMotherController.text.length != 16) {
+      Fluttertoast.showToast(
+        msg: "NIK harus 16 angka", backgroundColor: Colors.red
+      );
+
+      return;
+    }
+
+    context.read<GetCitizenCubit>().searchNikCitizen(
+      nikController.text,
+      type: SearchType.mother
+    );
+
+    _isSearching = true;
   }
 
   // Father Contoller
@@ -116,6 +199,7 @@ class _LetterFormViewState extends State<LetterFormView> {
   /// Activity
   late TextEditingController activityController;
   late TextEditingController activityAddressController;
+  late TextEditingController activityInformationController;
   late TextEditingController rtActivityController;
 
   DateTime? initialDateActivity;
@@ -150,6 +234,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     nationalityController = TextEditingController(
         text: widget.args.model?.nationality ?? "Indonesia");
     rtController = TextEditingController(text: widget.args.model?.rtrw);
+    informationController = TextEditingController(text: widget.args.model?.informations ?? "");
 
     valueGender = widget.args.model?.gender == null
         ? null
@@ -217,6 +302,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     activityController = TextEditingController(text: data?.activity ?? "");
     activityAddressController =
         TextEditingController(text: data?.address ?? "");
+    // activityInformationController = TextEditingController(text: data?.informations ?? "");
     rtActivityController = TextEditingController(text: data?.rtrw ?? "");
 
     initialDateMother = data?.time;
@@ -387,6 +473,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     }
   }
 
+  /// Menambahkan Keterangan
   bool _submitSku() {
     if (namaController.text == "") {
       Fluttertoast.showToast(
@@ -416,6 +503,10 @@ class _LetterFormViewState extends State<LetterFormView> {
       Fluttertoast.showToast(
           msg: "Alamat tidak boleh kosong", backgroundColor: Colors.red);
       return true;
+    } else if (informationController.text == "") {
+      Fluttertoast.showToast(
+        msg: "Keterangan tidak boleh kosong", backgroundColor: Colors.red);
+      return true;
     } else if (statusMarried == null) {
       Fluttertoast.showToast(
           msg: "Pilih status perkawinan", backgroundColor: Colors.red);
@@ -424,6 +515,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     return false;
   }
 
+  /// Menambahkan Keterangan
   bool _submitSkck() {
     if (namaController.text == "") {
       Fluttertoast.showToast(
@@ -457,6 +549,10 @@ class _LetterFormViewState extends State<LetterFormView> {
       Fluttertoast.showToast(
           msg: "Alamat tidak boleh kosong", backgroundColor: Colors.red);
       return true;
+    } else if (informationController.text == "") {
+      Fluttertoast.showToast(
+        msg: "Keterangan tidak boleh kosong", backgroundColor: Colors.red);
+      return true;
     } else if (statusMarried == null) {
       Fluttertoast.showToast(
           msg: "Pilih status perkawinan", backgroundColor: Colors.red);
@@ -465,6 +561,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     return false;
   }
 
+  /// Menambahkan Keterangan
   bool _submitSktm() {
     if (namaController.text == "") {
       Fluttertoast.showToast(
@@ -497,6 +594,10 @@ class _LetterFormViewState extends State<LetterFormView> {
     } else if (addressController.text == "") {
       Fluttertoast.showToast(
           msg: "Alamat tidak boleh kosong", backgroundColor: Colors.red);
+      return true;
+    } else if (informationController.text == "") {
+      Fluttertoast.showToast(
+        msg: "Keterangan tidak boleh kosong", backgroundColor: Colors.red);
       return true;
     } else if (statusMarried == null) {
       Fluttertoast.showToast(
@@ -767,6 +868,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     jobController.dispose();
     nationalityController.dispose();
     addressController.dispose();
+    informationController.dispose();
     super.dispose();
   }
 
@@ -795,6 +897,7 @@ class _LetterFormViewState extends State<LetterFormView> {
                   birthPlaceController.text = data.birthPlace;
                   jobController.text = data.job;
                   addressController.text = data.address;
+                  informationController.text = data.information;
                   nationalityController.text = "Indonesia";
                   valueGender = data.gender;
                   valueDatebirth =
@@ -972,23 +1075,14 @@ class _LetterFormViewState extends State<LetterFormView> {
             keyboardType: TextInputType.number,
             maxLength: 16,
             enabled: _isSearching ? !isEdit : isEdit,
-            textInputAction: TextInputAction.search,
+              textInputAction: TextInputAction.search,
             suffixIcon: IconButton(
               onPressed: _performSearch,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context
-                  .read<GetCitizenCubit>()
-                  .searchNikCitizen(nikController.text, type: SearchType.main);
-            },
+              _performSearch();
+            }
           ),
           if (widget.args.type == LetterType.sktps)
             TextFieldBorder(
@@ -1079,6 +1173,12 @@ class _LetterFormViewState extends State<LetterFormView> {
             maxLines: 4,
             // maxLength: 300,
           ),
+          TextFieldBorder(
+            title: 'Keterangan',
+            controller: informationController,
+            enabled: _isSearching ? !isEdit : isEdit,
+            maxLines: 4,
+          )
         ],
       );
 
@@ -1097,16 +1197,7 @@ class _LetterFormViewState extends State<LetterFormView> {
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context
-                  .read<GetCitizenCubit>()
-                  .searchNikCitizen(nikController.text, type: SearchType.main);
+              _searchSubmit();
             },
           ),
           TextFieldBorder(
@@ -1303,16 +1394,7 @@ class _LetterFormViewState extends State<LetterFormView> {
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context
-                  .read<GetCitizenCubit>()
-                  .searchNikCitizen(nikController.text, type: SearchType.main);
+              _performSearch();
             },
           ),
           TextFieldBorder(
@@ -1399,22 +1481,12 @@ class _LetterFormViewState extends State<LetterFormView> {
             keyboardType: TextInputType.number,
             maxLength: 16,
             enabled: _isSearching ? !isEdit : isEdit,
-            textInputAction: TextInputAction.search,
             suffixIcon: IconButton(
               onPressed: _performSearch,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikFatherController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context.read<GetCitizenCubit>().searchNikCitizen(
-                  nikFatherController.text,
-                  type: SearchType.father);
+              _performSearch();
             },
           ),
           TextFieldBorder(
@@ -1464,12 +1536,12 @@ class _LetterFormViewState extends State<LetterFormView> {
           TextFieldBorder(
             title: 'Pekerjaan',
             controller: jobFatherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
           ),
           TextFieldBorder(
             title: 'Alamat',
             controller: addressFatherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
             maxLines: 4,
             // maxLength: 300,
           ),
@@ -1486,38 +1558,28 @@ class _LetterFormViewState extends State<LetterFormView> {
             controller: nikMotherController,
             keyboardType: TextInputType.number,
             maxLength: 16,
-            // enabled: !_isSearched,
-            textInputAction: TextInputAction.search,
+            enabled: _isSearching ? !isEdit : isEdit,
             suffixIcon: IconButton(
               onPressed: _performSearch,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikMotherController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context.read<GetCitizenCubit>().searchNikCitizen(
-                  nikController.text,
-                  type: SearchType.mother);
+              _performSearch();
             },
           ),
           TextFieldBorder(
             title: 'Nama',
             controller: nameMotherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
           ),
           TextFieldBorder(
             title: 'Tempat\nLahir',
             controller: birthPlaceMotherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
           ),
           DatebirthField(
             value: valueDatebirthMother,
-            // isEdit: _isSearched,
+            isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
               final datePick = await showDatePicker(
                 context: context,
@@ -1537,7 +1599,7 @@ class _LetterFormViewState extends State<LetterFormView> {
             title: "Agama",
             value: valueReligionMother,
             items: religions,
-            // isEdit: _isSearched,
+            isEdit: _isSearching ? !isEdit : isEdit,
             onChange: (value) {
               setState(() {
                 valueReligionMother = value;
@@ -1547,17 +1609,17 @@ class _LetterFormViewState extends State<LetterFormView> {
           TextFieldBorder(
             title: 'Kewarganegaraan',
             controller: nationalityMotherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
           ),
           TextFieldBorder(
             title: 'Pekerjaan',
             controller: jobMotherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
           ),
           TextFieldBorder(
             title: 'Alamat',
             controller: addressMotherController,
-            // enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
             maxLines: 4,
             // maxLength: 300,
           ),
@@ -1595,7 +1657,7 @@ class _LetterFormViewState extends State<LetterFormView> {
           ),
           DatebirthField(
             value: valueDatebirth,
-            //isEdit: _isSearched,
+            isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
               final datePick = await showDatePicker(
                 context: context,
@@ -1627,22 +1689,12 @@ class _LetterFormViewState extends State<LetterFormView> {
             keyboardType: TextInputType.number,
             maxLength: 16,
             enabled: _isSearching ? !isEdit : isEdit,
-            textInputAction: TextInputAction.search,
             suffixIcon: IconButton(
-              onPressed: _performSearch,
+              onPressed: _performSearchFather,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikFatherController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context.read<GetCitizenCubit>().searchNikCitizen(
-                  nikController.text,
-                  type: SearchType.father);
+              _searchSubmitFather();
             },
           ),
 
@@ -1716,33 +1768,12 @@ class _LetterFormViewState extends State<LetterFormView> {
             keyboardType: TextInputType.number,
             maxLength: 16,
             enabled: _isSearching ? !isEdit : isEdit,
-            textInputAction: TextInputAction.search,
             suffixIcon: IconButton(
-              onPressed: () {
-                if (nikMotherController.text.length != 16) {
-                  Fluttertoast.showToast(
-                      msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                  return;
-                }
-
-                context.read<GetCitizenCubit>().searchNikCitizen(
-                    nikMotherController.text,
-                    type: SearchType.mother);
-              },
+              onPressed: _performSearchMother,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              if (nikMotherController.text.length != 16) {
-                Fluttertoast.showToast(
-                    msg: "NIK harus 16 angka", backgroundColor: Colors.red);
-
-                return;
-              }
-
-              context.read<GetCitizenCubit>().searchNikCitizen(
-                  nikController.text,
-                  type: SearchType.mother);
+              _searchSubmitMother();
             },
           ),
           TextFieldBorder(

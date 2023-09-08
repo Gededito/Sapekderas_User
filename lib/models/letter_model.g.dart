@@ -22,6 +22,7 @@ LetterModel _$LetterModelFromJson(Map json) => LetterModel(
       statusMarried: json['status_married'] as String? ?? "",
       job: json['job'] as String? ?? "",
       address: json['address'] as String? ?? "",
+      informations: json['informations'] as String? ?? "",
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
@@ -62,6 +63,7 @@ Map<String, dynamic> _$LetterModelToJson(LetterModel instance) =>
       'job': instance.job,
       'rtrw': instance.rtrw,
       'address': instance.address,
+      'information': instance.informations,
       'createdAt': instance.createdAt?.toIso8601String(),
       'status': _$StatusLetterEnumMap[instance.status]!,
       'father': instance.father?.toJson(),
