@@ -188,7 +188,6 @@ class LetterFamily extends Equatable {
     String? religion,
     String? job,
     String? address,
-    String? information,
     String? rtrw,
   }) {
     return LetterFamily(

@@ -148,7 +148,7 @@ class _LetterFormViewState extends State<LetterFormView> {
       return;
     }
 
-    context.read<GetCitizenCubit>().searchNikCitizen(nikController.text, type: SearchType.father);
+    context.read<GetCitizenCubit>().searchNikCitizen(nikFatherController.text, type: SearchType.father);
 
     _isSearching = true;
   }
@@ -163,7 +163,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     }
 
     context.read<GetCitizenCubit>().searchNikCitizen(
-      nikController.text,
+      nikMotherController.text,
       type: SearchType.mother
     );
 
@@ -899,7 +899,7 @@ class _LetterFormViewState extends State<LetterFormView> {
                   birthPlaceController.text = data.birthPlace;
                   jobController.text = data.job;
                   addressController.text = data.address;
-                  informationController.text = data.information;
+                  // informationController.text = data.informations;
                   nationalityController.text = "Indonesia";
                   valueGender = data.gender;
                   valueDatebirth =
@@ -1484,11 +1484,11 @@ class _LetterFormViewState extends State<LetterFormView> {
             maxLength: 16,
             enabled: _isSearching ? !isEdit : isEdit,
             suffixIcon: IconButton(
-              onPressed: _performSearch,
+              onPressed: _performSearchFather,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              _performSearch();
+              _searchSubmitFather();
             },
           ),
           TextFieldBorder(
@@ -1562,11 +1562,11 @@ class _LetterFormViewState extends State<LetterFormView> {
             maxLength: 16,
             enabled: _isSearching ? !isEdit : isEdit,
             suffixIcon: IconButton(
-              onPressed: _performSearch,
+              onPressed: _performSearchMother,
               icon: const Icon(Icons.search),
             ),
             onFieldSubmitted: (value) {
-              _performSearch();
+              _searchSubmitMother();
             },
           ),
           TextFieldBorder(
@@ -1644,13 +1644,13 @@ class _LetterFormViewState extends State<LetterFormView> {
           TextFieldBorder(
             title: 'Nama',
             controller: namaController,
-            //enabled: _isSearched,
+            enabled: _isSearching ? !isEdit : isEdit,
           ),
           AddUserDropDownn(
             title: "Jenis Kelamin",
             value: valueGender,
             items: genders,
-            //isEdit: _isSearched,
+            isEdit: _isSearching ? !isEdit : isEdit,
             onChange: (value) {
               setState(() {
                 valueGender = value;

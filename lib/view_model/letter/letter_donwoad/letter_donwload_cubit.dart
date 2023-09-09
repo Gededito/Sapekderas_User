@@ -176,7 +176,7 @@ class LetterDonwloadCubit extends Cubit<LetterDonwloadState> {
         ..add(TextContent("keystatusmarried", model.statusMarried))
         ..add(TextContent("keyjob", model.job))
         ..add(TextContent("keyaddress", model.address))
-        ..add(TextContent("keyinformations", model.informations));;
+        ..add(TextContent("keyinformations", model.informations));
 
       final docGenerated = await docx.generate(content);
       String filePath = "/storage/emulated/0/Download/SKCK ${model.name}.docx";
