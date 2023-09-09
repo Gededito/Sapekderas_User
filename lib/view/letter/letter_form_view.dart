@@ -1119,18 +1119,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirth,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDate = datePick;
-                valueDatebirth =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
@@ -1216,18 +1218,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirth,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDate = datePick;
-                valueDatebirth =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
@@ -1278,18 +1282,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             isEdit: _isSearching ? !isEdit : isEdit,
             title: "Tanggal",
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime.now(),
-                firstDate: DateTime(1900),
-                lastDate: DateTime(2100),
-              );
-              if (datePick != null) {
-                initialDateActivity = datePick;
-                valueDatebirthActivity =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           TextFieldBorder(
@@ -1351,18 +1357,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             isEdit: _isSearching ? !isEdit : isEdit,
             title: "Tanggal",
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDateRip ?? DateTime.now(),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDateRip = datePick;
-                valueDatebirthRip =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
 
@@ -1424,18 +1432,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirth,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDate = datePick;
-                valueDatebirth =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
@@ -1505,18 +1515,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirthFather,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDateFather = datePick;
-                valueDatebirthFather =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
@@ -1583,18 +1595,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirthMother,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDateMother = datePick;
-                valueDatebirthMother =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
@@ -1661,18 +1675,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirth,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime.now(),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDate = datePick;
-                valueDatebirth =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
 
@@ -1714,18 +1730,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirthFather,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDateFather = datePick;
-                valueDatebirthFather =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
@@ -1792,18 +1810,20 @@ class _LetterFormViewState extends State<LetterFormView> {
             value: valueDatebirthMother,
             isEdit: _isSearching ? !isEdit : isEdit,
             onTap: () async {
-              final datePick = await showDatePicker(
-                context: context,
-                initialDate: initialDate ?? DateTime(1945, 1, 1),
-                firstDate: DateTime(1900),
-                lastDate: DateTime.now(),
-              );
-              if (datePick != null) {
-                initialDateMother = datePick;
-                valueDatebirthMother =
-                    "${datePick.day} - ${datePick.month} - ${datePick.year}";
+              if (!_isSearching) {
+                final datePick = await showDatePicker(
+                  context: context,
+                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now(),
+                );
+                if (datePick != null) {
+                  initialDate = datePick;
+                  valueDatebirth =
+                  "${datePick.day} - ${datePick.month} - ${datePick.year}";
+                }
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           AddUserDropDownn(
