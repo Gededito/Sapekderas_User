@@ -156,6 +156,7 @@ class LetterFamily extends Equatable {
   final String religion;
   final String job;
   final String address;
+  final String informations;
   final String rtrw;
 
   const LetterFamily(
@@ -167,6 +168,7 @@ class LetterFamily extends Equatable {
       this.religion = "",
       this.job = "",
       this.address = "",
+      this.informations = "",
       this.rtrw = "",
       });
 
@@ -177,7 +179,7 @@ class LetterFamily extends Equatable {
 
   @override
   List<Object?> get props =>
-      [name, nik, birthPlace, dob, nationality, religion, job, address, rtrw];
+      [name, nik, birthPlace, dob, nationality, religion, job, address, informations, rtrw];
 
   LetterFamily copyWith({
     String? name,
@@ -188,6 +190,7 @@ class LetterFamily extends Equatable {
     String? religion,
     String? job,
     String? address,
+    String? informations,
     String? rtrw,
   }) {
     return LetterFamily(
@@ -199,6 +202,7 @@ class LetterFamily extends Equatable {
       religion: religion ?? this.religion,
       job: job ?? this.job,
       address: address ?? this.address,
+      informations: informations ?? this.informations,
       rtrw: rtrw ?? this.rtrw,
     );
   }
@@ -209,12 +213,14 @@ class LetterActivity extends Equatable {
   final String activity;
   final DateTime? time;
   final String address;
+  final String informations;
   final String rtrw;
 
   const LetterActivity({
     this.activity = "",
     this.time,
     this.address = "",
+    this.informations = "",
     this.rtrw = "",
   });
 
@@ -224,7 +230,7 @@ class LetterActivity extends Equatable {
   Map<String, dynamic> toJson() => _$LetterActivityToJson(this);
 
   @override
-  List<Object?> get props => [activity, time, address, rtrw];
+  List<Object?> get props => [activity, time, address, informations, rtrw];
 }
 
 @JsonSerializable(explicitToJson: true)

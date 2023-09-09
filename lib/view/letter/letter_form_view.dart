@@ -899,7 +899,7 @@ class _LetterFormViewState extends State<LetterFormView> {
                   birthPlaceController.text = data.birthPlace;
                   jobController.text = data.job;
                   addressController.text = data.address;
-                  // informationController.text = data.informations;
+                  informationController.text = data.informations;
                   nationalityController.text = "Indonesia";
                   valueGender = data.gender;
                   valueDatebirth =
@@ -918,7 +918,7 @@ class _LetterFormViewState extends State<LetterFormView> {
                   jobFatherController.text = data.job;
                   addressFatherController.text = data.address;
                   rtFatherController.text = data.rtrw;
-
+                  informationController.text = data.informations;
                   valueReligionFather = data.religion;
                   initialDateFather = data.dob;
                   valueDatebirthFather =
@@ -933,7 +933,7 @@ class _LetterFormViewState extends State<LetterFormView> {
                   jobMotherController.text = data.job;
                   addressMotherController.text = data.address;
                   rtMotherController.text = data.rtrw;
-
+                  informationController.text = data.informations;
                   valueReligionMother =
                       data.religion == "" ? null : data.religion;
                   initialDateMother = data.dob;

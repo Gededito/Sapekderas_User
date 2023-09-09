@@ -63,7 +63,7 @@ Map<String, dynamic> _$LetterModelToJson(LetterModel instance) =>
       'job': instance.job,
       'rtrw': instance.rtrw,
       'address': instance.address,
-      'information': instance.informations,
+      'informations': instance.informations,
       'createdAt': instance.createdAt?.toIso8601String(),
       'status': _$StatusLetterEnumMap[instance.status]!,
       'father': instance.father?.toJson(),
@@ -106,6 +106,7 @@ LetterFamily _$LetterFamilyFromJson(Map json) => LetterFamily(
       religion: json['religion'] as String? ?? "",
       job: json['job'] as String? ?? "",
       address: json['address'] as String? ?? "",
+      informations: json['informations'] as String? ?? "",
       rtrw: json['rtrw'] as String? ?? "",
     );
 
@@ -119,6 +120,7 @@ Map<String, dynamic> _$LetterFamilyToJson(LetterFamily instance) =>
       'religion': instance.religion,
       'job': instance.job,
       'address': instance.address,
+      'informations': instance.informations,
       'rtrw': instance.rtrw,
     };
 
@@ -127,6 +129,7 @@ LetterActivity _$LetterActivityFromJson(Map json) => LetterActivity(
       time:
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
       address: json['address'] as String? ?? "",
+      informations: json['informations'] as String? ?? "",
       rtrw: json['rtrw'] as String? ?? "",
     );
 
@@ -135,6 +138,7 @@ Map<String, dynamic> _$LetterActivityToJson(LetterActivity instance) =>
       'activity': instance.activity,
       'time': instance.time?.toIso8601String(),
       'address': instance.address,
+      'informations': instance.informations,
       'rtrw': instance.rtrw,
     };
 
