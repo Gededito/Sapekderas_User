@@ -1287,11 +1287,11 @@ class _LetterFormViewState extends State<LetterFormView> {
                   context: context,
                   initialDate: initialDate ?? DateTime(1945, 1, 1),
                   firstDate: DateTime(1900),
-                  lastDate: DateTime.now(),
+                  lastDate: DateTime(2100),
                 );
                 if (datePick != null) {
-                  initialDate = datePick;
-                  valueDatebirth =
+                  initialDateActivity = datePick;
+                  valueDatebirthActivity =
                   "${datePick.day} - ${datePick.month} - ${datePick.year}";
                 }
                 setState(() {});
@@ -1360,13 +1360,13 @@ class _LetterFormViewState extends State<LetterFormView> {
               if (!_isSearching) {
                 final datePick = await showDatePicker(
                   context: context,
-                  initialDate: initialDate ?? DateTime(1945, 1, 1),
+                  initialDate: initialDateRip ?? DateTime(1945, 1, 1),
                   firstDate: DateTime(1900),
                   lastDate: DateTime.now(),
                 );
                 if (datePick != null) {
-                  initialDate = datePick;
-                  valueDatebirth =
+                  initialDateRip = datePick;
+                  valueDatebirthRip =
                   "${datePick.day} - ${datePick.month} - ${datePick.year}";
                 }
                 setState(() {});
@@ -1523,8 +1523,8 @@ class _LetterFormViewState extends State<LetterFormView> {
                   lastDate: DateTime.now(),
                 );
                 if (datePick != null) {
-                  initialDate = datePick;
-                  valueDatebirth =
+                  initialDateFather = datePick;
+                  valueDatebirthFather =
                   "${datePick.day} - ${datePick.month} - ${datePick.year}";
                 }
                 setState(() {});
@@ -1603,8 +1603,8 @@ class _LetterFormViewState extends State<LetterFormView> {
                   lastDate: DateTime.now(),
                 );
                 if (datePick != null) {
-                  initialDate = datePick;
-                  valueDatebirth =
+                  initialDateMother = datePick;
+                  valueDatebirthMother =
                   "${datePick.day} - ${datePick.month} - ${datePick.year}";
                 }
                 setState(() {});
@@ -1738,8 +1738,8 @@ class _LetterFormViewState extends State<LetterFormView> {
                   lastDate: DateTime.now(),
                 );
                 if (datePick != null) {
-                  initialDate = datePick;
-                  valueDatebirth =
+                  initialDateFather = datePick;
+                  valueDatebirthFather =
                   "${datePick.day} - ${datePick.month} - ${datePick.year}";
                 }
                 setState(() {});
@@ -1818,8 +1818,8 @@ class _LetterFormViewState extends State<LetterFormView> {
                   lastDate: DateTime.now(),
                 );
                 if (datePick != null) {
-                  initialDate = datePick;
-                  valueDatebirth =
+                  initialDateMother = datePick;
+                  valueDatebirthMother =
                   "${datePick.day} - ${datePick.month} - ${datePick.year}";
                 }
                 setState(() {});
