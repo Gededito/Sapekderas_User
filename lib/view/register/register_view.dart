@@ -209,11 +209,11 @@ class _RegisterViewState extends State<RegisterView> {
                           Fluttertoast.showToast(
                             msg: "Nomor Telepon tidak boleh kosong",
                           );
-                        } else if (nikController.text.length == 16) {
+                        } else if (nikController.text.length != 16) {
                           Fluttertoast.showToast(
                             msg: "NIK tidak boleh kosong dan harus 16 angka",
                           );
-                        } else if (passwordController.text.length >= 8) {
+                        } else if (passwordController.text == "") {
                           Fluttertoast.showToast(
                             msg: "Password minimal harus 8 kata",
                           );
