@@ -302,7 +302,7 @@ class _LetterFormViewState extends State<LetterFormView> {
     activityController = TextEditingController(text: data?.activity ?? "");
     activityAddressController =
         TextEditingController(text: data?.address ?? "");
-    // activityInformationController = TextEditingController(text: data?.informations ?? "");
+    activityInformationController = TextEditingController(text: data?.informations ?? "");
     rtActivityController = TextEditingController(text: data?.rtrw ?? "");
 
     initialDateMother = data?.time;
