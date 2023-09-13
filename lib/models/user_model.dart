@@ -27,6 +27,9 @@ class UserModel extends Equatable {
   final String nik;
 
   @HiveField(6)
+  final bool isVerified;
+
+  @HiveField(7)
   final String type;
 
   const UserModel({
@@ -36,6 +39,7 @@ class UserModel extends Equatable {
     this.nik = '',
     this.phone = '',
     this.type = "user",
+    this.isVerified = false,
     this.name = "",
   });
 
@@ -45,7 +49,7 @@ class UserModel extends Equatable {
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   @override
-  List<Object?> get props => [email, password, id, name, nik, type];
+  List<Object?> get props => [email, password, id, name, nik, isVerified, type];
 
   UserModel copyWith({
     String? email,
@@ -55,6 +59,7 @@ class UserModel extends Equatable {
     String? phone,
     String? nik,
     String? type,
+    bool? isVerified
   }) {
     return UserModel(
       email: email ?? this.email,
@@ -63,6 +68,7 @@ class UserModel extends Equatable {
       name: name ?? this.name,
       phone: phone ?? this.phone,
       nik: nik ?? this.nik,
+      isVerified: isVerified ?? this.isVerified,
       type: type ?? this.type,
     );
   }

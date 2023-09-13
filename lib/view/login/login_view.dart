@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -121,9 +120,6 @@ class _LoginViewState extends State<LoginView> {
                         onPressed: null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: ColorsUtils.bgScaffold,
-
-                          // backgroundColor:
-                          //     const Color.fromRGBO(255, 255, 255, 1),
                           elevation: 2,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -155,7 +151,7 @@ class _LoginViewState extends State<LoginView> {
                           context.read<AuthCubit>().loginEvent(UserModel(
                                 email: emailController.text,
                                 password: passwordController.text,
-                                id: '',
+                                id: ''
                               ));
                           // context.read<LoginCubit>().addAdmin();
                         }
