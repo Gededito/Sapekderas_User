@@ -149,11 +149,10 @@ class _LoginViewState extends State<LoginView> {
                           );
                         } else {
                           context.read<AuthCubit>().loginEvent(UserModel(
-                                email: emailController.text,
-                                password: passwordController.text,
-                                id: ''
-                              ));
-                          // context.read<LoginCubit>().addAdmin();
+                            email: emailController.text,
+                            password: passwordController.text,
+                            id: '',
+                          ));
                         }
                       },
                       style: ElevatedButton.styleFrom(

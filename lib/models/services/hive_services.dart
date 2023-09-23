@@ -42,7 +42,7 @@ class HiveServices {
   // Get User from local storage.
   UserModel getUser() {
     return _hive.box<UserModel>(_boxUser).get(_keyUser) ??
-        const UserModel(email: "", password: "", id: "", nik: "");
+        UserModel(email: "", password: "", id: "", nik: "", isVerified: false);
   }
 
   // Store User to local storage.

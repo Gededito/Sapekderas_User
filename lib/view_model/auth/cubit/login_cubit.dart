@@ -31,14 +31,16 @@ class AuthCubit extends Cubit<AuthState> {
       if (querySnapshot.docs.isNotEmpty) {
         final getUser = querySnapshot.docs.first.data();
 
-        if (_isPasswordCorrect(user.password, getUser.password) &&
-            getUser.type == "user" && user.isVerified != false) {
-          await HiveServices(Hive).storeUser(getUser);
-          emit(AuthSuccess());
-        } else if (user.isVerified == false) {
-          emit(const AuthError("User Belum Diverifikasi"));
+        if (_isPasswordCorrect(user.password, getUser.password) && user.type == "user"
+              && user.isVerified == true) {
+            await HiveServices(Hive).storeUser(getUser);
+            emit(AuthSuccess());
         } else {
-          emit(const AuthError("Password tidak sama"));
+          if (user.isVerified != true) {
+            emit(const AuthError("Silahkan Verifikasi Admin"));
+          } else {
+            emit(const AuthError("Password tidak sama"));
+          }
         }
       } else {
         emit(const AuthError("User tidak ditemukan"));

@@ -32,7 +32,7 @@ class UserModel extends Equatable {
   @HiveField(7)
   final String type;
 
-  const UserModel({
+  UserModel({
     required this.email,
     required this.password,
     required this.id,
@@ -58,8 +58,8 @@ class UserModel extends Equatable {
     String? name,
     String? phone,
     String? nik,
+    bool? isVerified,
     String? type,
-    bool? isVerified
   }) {
     return UserModel(
       email: email ?? this.email,
