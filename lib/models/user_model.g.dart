@@ -73,7 +73,7 @@ UserModel _$UserModelFromJson(Map json) => UserModel(
       type: json['type'] as String? ?? "user",
       name: json['name'] as String? ?? "",
       nik: json['nik'] as String? ?? "",
-      isVerified: json['isVerified'] as bool? ?? false
+      isVerified: json['isVerified'] as bool
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{

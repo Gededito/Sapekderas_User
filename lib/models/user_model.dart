@@ -27,6 +27,7 @@ class UserModel extends Equatable {
   final String nik;
 
   @HiveField(6)
+  @JsonKey(defaultValue: false)
   final bool isVerified;
 
   @HiveField(7)

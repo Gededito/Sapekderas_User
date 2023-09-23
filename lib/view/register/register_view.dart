@@ -225,7 +225,6 @@ class _RegisterViewState extends State<RegisterView> {
                                 password: passwordController.text,
                                 nik: nikController.text,
                                 id: const Uuid().v4(),
-                                isVerified: false,
                               ));
                           // context.read<LoginCubit>().addAdmin();
                         }
