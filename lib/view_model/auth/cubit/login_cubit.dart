@@ -30,7 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
 
       if (querySnapshot.docs.isNotEmpty) {
         final getUser = querySnapshot.docs.first.data();
-        print(getUser.toJson());
+        // print(getUser.toJson());
 
         if (_isPasswordCorrect(user.password, getUser.password) && getUser.type == "user"
               && getUser.isVerified == true) {
@@ -38,7 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
             emit(AuthSuccess());
         } else {
           if (getUser.isVerified == false) {
-            emit(const AuthError("Silahkan Verifikasi Admin"));
+            emit(const AuthError("Silahkan Melakukan Verifikasi Ke Admin"));
           } else {
             emit(const AuthError("Password tidak sama"));
           }

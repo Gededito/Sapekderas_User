@@ -968,31 +968,6 @@ class _LetterFormViewState extends State<LetterFormView> {
                           fontSize: 14, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  // DropDownLetterType<LetterType>(
-                  //   value: type,
-                  //   items: letterTypes,
-                  //   isEdit: isEdit,
-                  //   onChange: widget.args.crud == Crud.read
-                  //       ? (value) {}
-                  //       : (value) {
-                  //           setState(() {
-                  //             type = value;
-                  //           });
-                  //         },
-                  //   title: 'Type',
-                  // ),
-                  // if (widget.args.crud == Crud.update)
-                  //   DropDownLetterType<StatusLetter>(
-                  //     value: status,
-                  //     items: statusList,
-                  //     isEdit: isEdit,
-                  //     onChange: (value) {
-                  //       setState(() {
-                  //         status = value;
-                  //       });
-                  //     },
-                  //     title: 'Status',
-                  //   ),
                   if (widget.args.type != null) ...[
                     switch (widget.args.type) {
                       LetterType.spn => formFieldSpn(),

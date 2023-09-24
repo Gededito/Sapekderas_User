@@ -167,7 +167,7 @@ class _RegisterViewState extends State<RegisterView> {
                   listener: (context, state) {
                     if (state is AuthSuccess) {
                       Navigator.pushNamedAndRemoveUntil(
-                          context, Routes.main, (context) => false);
+                          context, Routes.login, (context) => false);
                     } else if (state is AuthError) {
                       Fluttertoast.showToast(msg: state.message);
                     }
